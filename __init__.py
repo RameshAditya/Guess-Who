@@ -1,9 +1,9 @@
-import parsetext
-import traintext
+import parsetext as p
+import traintext as t
 
 
 def main():
     tokens=[]
-    return parsetext.parse(tokens)
+    return t.train({},p.parse(tokens),'Aditya')
 
 print(main())
