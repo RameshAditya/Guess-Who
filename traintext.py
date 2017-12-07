@@ -1,14 +1,17 @@
 '''
 Follow:{
             {word -
-                {next word -
-                                speaker
-                                frequency
-                }
+                    {next word -
+                                [speaker
+                                 frequency]
+                    }
             }
         }
 
 '''
+
+#temp value
+tokens=['hello', 'my', 'name', 'is', 'aditya', 'and', 'this', 'is', 'a', 'sentence', 'and', 'part', 'of', 'a', 'test']
 
 def train(follow, tokens, speaker):
 
@@ -33,9 +36,22 @@ def train(follow, tokens, speaker):
 
     for i in range(len(tokens)-1):
         #CHECK IF THE GIVEN FOLLOWING WORD HAS ALREADY OCCURRED, IF YES THEN APPEND ELSE CREATE
-
-        if follow[tokens[i]][tokens[i+1]] not in follow.:
+        if tokens[i+1] not in list(follow[tokens[i]]):
             follow[tokens[i]][tokens[i+1]]=[]
+
+    for i in range(len(tokens)-1):
+        c=0
+        if len(list(follow[tokens[i]][tokens[i+1]]))>0:
+            for k in range(len(list(follow[tokens[i]][tokens[i+1]]))):
+                if follow[tokens[i]][tokens[i+1]][k][0]==speaker:
+                    follow[tokens[i]][tokens[i+1]][k][1]+=1
+                    c=1
+        if c==0:
+            print('NEVER')
+            follow[tokens[i]][tokens[i+1]].append([speaker,1])
+        
+    #for i in range(len(tokens)-1):
+     #   follow[tokens[i]][tokens[i+1]]
 
     #print(follow)
     

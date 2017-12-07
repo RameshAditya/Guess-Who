@@ -21,7 +21,7 @@ def parse(tokens):
 
     for i in range(len(s)):
         if s[i] in allow:
-            buf+=s[i]
+            buf+=s[i].lower()
         if s[i]==' ':
             tokens.append(buf)
             buf=''
