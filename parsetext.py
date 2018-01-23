@@ -10,7 +10,7 @@ def parse_unseen(s):
     allow='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
     #add full stop in remove?
-    remove='!@#$%^&*()_\'-+=[{]}\||;:",<>/?/'
+    remove='!@#$%^&*()_\'-+=\..[{]}\||;:",<>/?/'
 
     #Read in to string here via file handling or twitter later
     #s='Hello, my name is Aditya, and this is a sentence! (and part of a test case...)'
@@ -19,7 +19,10 @@ def parse_unseen(s):
 
     buf=''
     words=[]
+    s=list(s)
     for i in range(len(s)):
+        if s[i]=='.':
+            s[i]=' '
         if s[i] in allow:
             buf+=s[i].lower()
         if s[i]==' ':
@@ -34,7 +37,7 @@ def parse_cumulative(tokens):
     allow='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
     #add full stop in remove?
-    remove='!@#$%^&*()_\'-+=[{]}\||;:",<>/?/'
+    remove='!@#$%^&*()_\'\..-+=[{]}\||;:",<>/?/'
 
     #Read in to string here via file handling or twitter later
     s='Hello, my name is Aditya, and this is a sentence! (and part of a test case...)'
@@ -42,8 +45,10 @@ def parse_cumulative(tokens):
     #s='D17: Read up on the KMP linear time string matching algorithm. Learnt Moore\'s voting algorithm. Wrote another blog post. Finished up the previous post on union-find. Revised C++ STL. And now working on graph theory. Continued coursera\'s #MachineLearning course. #100DaysOfCode'
 
     buf=''
-
+    s=list(s)
     for i in range(len(s)):
+        if s[i]=='.':
+            s[i]=' '
         if s[i] in allow:
             buf+=s[i].lower()
         if s[i]==' ':
