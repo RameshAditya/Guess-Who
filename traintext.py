@@ -1,4 +1,5 @@
 '''
+DATA FORMAT
 doubles:{
             singles:{
                         {word -
@@ -9,6 +10,15 @@ doubles:{
                         }
                     }
         }
+
+singles:{
+                        {word -
+                                {next word -
+                                            [speaker
+                                             frequency]
+                                }
+                        }
+                    }
 '''
 
 #temp value
@@ -52,9 +62,4 @@ def train(singles, doubles, tokens, speaker):
         if double_exists==0:
             doubles[tokens[i]][tokens[i+1]].append([speaker,1])
 
-    #Decide later to return singles or not
-    print(singles)
-    print('\n\n')
-    print(doubles)
-    #return [singles,doubles]
-    return doubles
+    return [singles, doubles]
